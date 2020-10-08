@@ -1,6 +1,8 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
-const connection = require("./config/connection");
+// const connection = require("./config/connection");
+const routes = require("./controllers/burgerController.js");
+
 
 const app = express();
 
@@ -18,18 +20,8 @@ app.set("view engine", "handlebars");
 
 
 // VIEWS ROUTES
-app.get("/", (req, res) =>  {
-    connection.query("SELECT * FROM burgers", (err, data)   =>  {
-        console.table(data);
-    })
-    res.render("index", {name: "jonathan"})
-});
 
-app.get("/api/config",  (req, res)  =>  {
-    res.json({
-        success:true,
-    })
-})
+app.use(routes);
 
 app.listen(PORT, () =>  {
     console.log(`Server is running on http://localhost:${PORT}`)

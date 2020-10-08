@@ -1,13 +1,16 @@
 const connection = require("./connection.js");
 
 const orm = {
- selectAll: function(cb)    {
-    const queryString = "SELECT * FROM burgers;"
+
+    selectAll: function(tableInput, cb) {
+    var queryString = "SELECT * FROM " + tableInput + ";";
     connection.query(queryString, function(err, result) {
-        if (err) throw err;
-        cb(result);
+      if (err) {
+        throw err;
+      }
+      cb(result);
     });
-},
+  },
 
 insertOne: function(value, cb)    {
     const queryString = "INSERT INTO burgers(burger_name) VALUES (?);"
@@ -17,18 +20,29 @@ insertOne: function(value, cb)    {
     });
 },
 
-// updateOne: function(value, cb)  {
-//     const queryString = "UPDATE SET ? WHERE id = ?;"
+insertOne: function(table, cols, vals, cb) {
+    var queryString = "INSERT INTO " + table;
+    queryString += " (";
+    queryString += cols.toString();
+    queryString += ") ";
+    queryString += "VALUES (";
+    queryString += printQuestionMarks(vals.length);
+    queryString += ") ";
 
-// }
+    console.log(queryString);
 
-// }
-    // * `selectAll()`
-    // * `insertOne()`
-    // * `updateOne()`
+    connection.query(queryString, vals, function(err, result) {
+      if (err) {
+        throw err;
+      }
+
+      cb(result);
+    });
+  },
 
 
 }
 
+module.exports = orm;
 
 // INSERT INTO favorite_foods(food, score) VALUES ("lasagna", 3);
