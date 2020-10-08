@@ -1,6 +1,6 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
-const mysql = require("mysql")
+const connection = require(".config/connection");
 // const connection = require(".config/connection")
 const app = express();
 
