@@ -19,7 +19,7 @@ app.set("view engine", "handlebars");
 
 // VIEWS ROUTES
 app.get("/", (req, res) =>  {
-    res.render("index")
+    res.render("index", {name: "Jonathan"})
 });
 
 
