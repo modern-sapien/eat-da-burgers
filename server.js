@@ -1,7 +1,7 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
 const connection = require("./config/connection");
-// const connection = require(".config/connection")
+
 const app = express();
 
 const PORT = process.env.PORT || 8080;
@@ -24,7 +24,6 @@ app.get("/", (req, res) =>  {
     })
     res.render("index", {name: "jonathan"})
 });
-
 
 app.get("/api/config",  (req, res)  =>  {
     res.json({

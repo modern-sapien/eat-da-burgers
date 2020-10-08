@@ -1,11 +1,4 @@
-
 const connection = require("./connection.js");
-
-// function objToSQl(ob)   {
-//     var arr = [];
-
-//     for (va)
-// }
 
 const orm = {
  selectAll: function(cb)    {
@@ -24,10 +17,10 @@ insertOne: function(value, cb)    {
     });
 },
 
-updateOne: function(value, cb)  {
-    const queryString = "UPDATE SET ? WHERE id = ?;"
+// updateOne: function(value, cb)  {
+//     const queryString = "UPDATE SET ? WHERE id = ?;"
 
-}
+// }
 
 // }
     // * `selectAll()`
