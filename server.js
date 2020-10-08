@@ -19,7 +19,10 @@ app.set("view engine", "handlebars");
 
 // VIEWS ROUTES
 app.get("/", (req, res) =>  {
-    res.render("index", {name: "Jonathan"})
+    connection.query("SELECT * FROM burgers", (err, data)   =>  {
+        console.table(data);
+    })
+    res.render("index", {name: "jonathan"})
 });
 
 

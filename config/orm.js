@@ -1,11 +1,11 @@
 
 const connection = require("./connection.js");
 
-function objToSQl(ob)   {
-    var arr = [];
+// function objToSQl(ob)   {
+//     var arr = [];
 
-    for (va)
-}
+//     for (va)
+// }
 
 const orm = {
  selectAll: function(cb)    {
