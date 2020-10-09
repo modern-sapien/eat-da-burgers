@@ -3,6 +3,7 @@ const router = express.Router();
 const burger = require("../models/burgermodel.js");
 
 router.get("/", function(req, res)  {
+    console.log("did this get route happen?")
     burger.selectAll(function(data)   {
         const hbsObject = {
             burgers: data
@@ -13,6 +14,7 @@ router.get("/", function(req, res)  {
 });
 
 router.post("/api/burger", function(req, res)  {
+    console.log("did this post route happen?")
     burger.insertOne([
         "burger_name", "devoured"
     ],  [req.body.name, req.body.devoured],  function(data)    {
@@ -34,6 +36,7 @@ router.put("/api/burger/:id", function(req, res)   {
         } else {
         res.status(200).end();
         }
+        location.reload();
     })
 });
 

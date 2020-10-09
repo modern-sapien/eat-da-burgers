@@ -50,7 +50,6 @@ insertOne: function(table, cols, vals, cb) {
       if (err) {
         throw err;
       }
-
       cb(result);
     });
   },
