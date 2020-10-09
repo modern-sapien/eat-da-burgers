@@ -1,12 +1,12 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
+
 $(function() {
   $(".change-devour").on("click", function(event) {
     console.log("devour button change")
     var id = $(this).data("id");
-    var devourState = $(this).data("devourstate");
-
+    
     var newDevourState = {
-      devoured: devourState
+      devoured: true
     };
 
     // Send the PUT request.
@@ -15,7 +15,7 @@ $(function() {
       data: newDevourState
     }).then(
       function() {
-        console.log("changed sleep to", devourState);
+        console.log("changed devoured to", newDevourState);
         // Reload the page to get the updated list
         location.reload();
       }
@@ -28,17 +28,17 @@ $(function() {
     event.preventDefault();
 
     var newBurger = {
-      name: $("#ca").val().trim(),
-      devoured: $("[name=devoured]:checked").val().trim()
+      burger_name: $("#ca").val().trim(),
     };
 
     // Send the POST request.
-    $.ajax("/api/burger", {
+    $.ajax("/api/burgers", {
       type: "POST",
       data: newBurger
     }).then(
       function() {
         console.log("created new burger");
+        location.reload();
         // Reload the page to get the updated list
       }
     );
